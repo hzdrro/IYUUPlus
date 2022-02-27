@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.15
 
 LABEL maintainer="david <367013672@qq.com>" version="2.0"
 
@@ -23,8 +23,8 @@ ENV APP_ENV=${app_env:-"prod"} \
 WORKDIR /IYUU
 RUN set -ex \
         # change apk source repo
-        #&& sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
-        && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
+        && sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+        #&& sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
         && apk update \
         && apk add --no-cache \
         # Install base packages ('ca-certificates' will install 'nghttp2-libs')
@@ -77,9 +77,9 @@ RUN set -ex \
         php7-zip \
         php7-zlib \
         php7-xml \
-        && git clone https://github.com/ledccn/IYUUPlus.git /IYUU \
+        && git clone https://github.com/hzdrro/IYUUPlus.git /IYUU \
         # && git clone https://gitee.com/ledc/iyuuplus.git /IYUU \
-        && git remote set-url origin https://gitee.com/ledc/iyuuplus.git \
+        && git remote set-url origin https://github.com/hzdrro/IYUUPlus.git \
         && git config --global pull.ff only \
         && apk del --purge *-dev \
         # install latest composer
