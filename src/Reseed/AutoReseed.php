@@ -1198,6 +1198,8 @@ class AutoReseed
                     } else {
                         $extra_options['paused'] = 'true';
                     }
+                    // 跳校验
+                    $extra_options['skip_checking'] = "true";
                     // 是否创建根目录
                     $extra_options['root_folder'] = static::$links[$clientKey]['root_folder'] ? 'true' : 'false';
                     if ($is_url) {
